@@ -1,33 +1,35 @@
 import manager.LogisticsManager;
 import patterns.SimulationClock;
-
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         try {
+            System.out.println("Benvenuto nel Logistics Management System (Modo #1)");
+
             LogisticsManager manager = new LogisticsManager();
 
-            // 1. Inizializza (legge file)
+            // 1. Inizializza (legge il file hubs.txt e carica la mappa)
             manager.init();
 
-            // 2. Crea qualche spedizione di prova
-            // Caso 1: Pacco leggero (Userà Furgone)
-            manager.creaNuovaSpedizione("Milano", "Roma", 50.0);
-
-            // Caso 2: Pacco pesante (Userà Tir)
-            manager.creaNuovaSpedizione("Napoli", "Milano", 5000.0);
+            // 2. Crea spedizioni casuali (Ora il metodo è automatico!)
+            System.out.println("\n--- CREAZIONE SPEDIZIONI ---");
+            manager.creaNuovaSpedizione(); // Crea una spedizione random
+            manager.creaNuovaSpedizione(); // Ne crea un'altra
+            manager.creaNuovaSpedizione(); // Ne crea una terza
 
             // 3. Avvia il tempo (Singleton)
+            // Il clock inizierà a ticchettare e gli Observer (Manager -> Stati) reagiranno
             System.out.println("\n--- AVVIO SIMULAZIONE ---");
             SimulationClock.getInstance().startSimulation();
 
-            // Tieni vivo il main (opzionale, solo per non farlo chiudere subito se non ci sono thread daemon)
+            // Tieni vivo il programma finché non premi Invio
             new Scanner(System.in).nextLine();
 
         } catch (FileNotFoundException e) {
-            System.err.println("File hubs.txt non trovato! Assicurati che sia nella cartella del progetto.");
+            System.err.println("ERRORE CRITICO: File hubs.txt non trovato!");
+            System.err.println("Assicurati che il file sia nella cartella principale del progetto (sopra 'src').");
         }
     }
 }

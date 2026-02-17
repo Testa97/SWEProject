@@ -1,30 +1,58 @@
 package model;
 
+import states.*; // Importiamo il pacchetto con i nuovi stati
+
 public class Spedizione {
+    // Dati immutabili della spedizione
     private int id;
     private Hub partenza;
     private Hub destinazione;
     private AbstractVehicle veicolo;
-    private int oreViaggioTotali;
-    private int oreViaggioTrascorse;
-    private boolean completata;
+
+    // PATTERN STATE: Il cuore della modifica
+    // Non usiamo più booleani o contatori qui, ma un oggetto che rappresenta lo stato
+    private StatoSpedizione statoCorrente;
+
+    // Cache della distanza (calcolata una volta sola)
+    private double distanzaKm;
 
     public Spedizione(Hub partenza, Hub destinazione, AbstractVehicle veicolo) {
         this.id = (int) (Math.random() * 10000);
         this.partenza = partenza;
         this.destinazione = destinazione;
         this.veicolo = veicolo;
-        this.oreViaggioTrascorse = 0;
-        this.completata = false;
 
-        // Calcoliamo subito la distanza e quanto tempo ci vuole
-        double distanzaKm = calcolaDistanza(partenza, destinazione);
-        // Tempo = Spazio / Velocità (arrotondato per eccesso)
-        this.oreViaggioTotali = (int) Math.ceil(distanzaKm / veicolo.getSpeed());
+        // Calcoliamo subito la distanza e salviamola
+        this.distanzaKm = calcolaDistanza(partenza, destinazione);
+
+        // STATO INIZIALE: Appena creata, la spedizione è "In Attesa"
+        this.statoCorrente = new StatoInAttesa();
     }
 
-    // Formula "Harversine" semplificata per calcolare km tra due coordinate
-    // (Simile a quella usata da Raspanti)
+    // --- LOGICA CORE (PATTERN STATE) ---
+
+    // Questo metodo viene chiamato dal LogisticsManager ogni ora.
+    // Invece di fare calcoli qui, DELEGHIAMO il lavoro allo stato corrente.
+    public void avanzaDiUnOra() {
+        statoCorrente.avanza(this);
+    }
+
+    // Questo metodo serve agli Stati per cambiare il contesto (es. da Attesa -> Viaggio)
+    public void setStato(StatoSpedizione nuovoStato) {
+        this.statoCorrente = nuovoStato;
+    }
+
+    // Helper per il LogisticsManager (per sapere quando smettere di controllarla)
+    public boolean isCompletata() {
+        return statoCorrente instanceof StatoConsegnato;
+    }
+
+    public String getStatoLeggibile() {
+        return statoCorrente.getDescrizione();
+    }
+
+    // --- CALCOLI GEOGRAFICI (Preservati dal vecchio codice) ---
+
     private double calcolaDistanza(Hub h1, Hub h2) {
         double lat1 = Math.toRadians(h1.getLatitude());
         double lon1 = Math.toRadians(h1.getLongitude());
@@ -42,29 +70,14 @@ public class Spedizione {
         double c = 2 * Math.asin(Math.sqrt(a));
         double distanzaLineaDaria = c * raggioTerra;
 
-        // TRUCCO REALISMO: Le strade non sono dritte!
-        // Moltiplichiamo per 1.3 per simulare curve, uscite autostradali, ecc.
-        double distanzaSuStrada = distanzaLineaDaria * 1.3;
-
-        return distanzaSuStrada;
+        // TRUCCO REALISMO: Moltiplichiamo per 1.3
+        return distanzaLineaDaria * 1.3;
     }
 
-    // Metodo per far avanzare il camion
-    public void avanzaDiUnOra() {
-        if (!completata) {
-            oreViaggioTrascorse++;
-        }
-    }
+    // --- GETTERS (Servono agli Stati per fare i calcoli) ---
 
-    public boolean isArrivata() {
-        return oreViaggioTrascorse >= oreViaggioTotali;
-    }
-
-    // Getter
     public int getId() { return id; }
-    public boolean isCompletata() { return completata; }
-    public void setCompletata(boolean completata) { this.completata = completata; }
-    public Hub getPartenza() { return partenza; }
-    public Hub getDestinazione() { return destinazione; }
     public AbstractVehicle getVeicolo() { return veicolo; }
+    public Hub getDestinazione() { return destinazione; }
+    public double getDistanza() { return distanzaKm; }
 }
