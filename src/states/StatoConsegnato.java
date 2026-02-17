@@ -9,5 +9,5 @@ public class StatoConsegnato implements StatoSpedizione {
     }
 
     @Override
-    public String getDescrizione() { return "CONSEGNATO"; }
+    public String getDescrizione() { return "CONSEGNATA"; }
 }
