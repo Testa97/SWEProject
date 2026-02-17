@@ -18,17 +18,17 @@ class HubTest {
     @Test
     void testGestioneBaie() {
         // All'inizio deve esserci posto
-        assertTrue(hub.isBaiaLiberaDisponibile(), "Le baie dovrebbero essere libere all'inizio");
+        assertTrue(hub.isBayAvailable(), "Le baie dovrebbero essere libere all'inizio");
 
         // Occupiamo la prima baia
-        hub.getBaie().get(0).setOccupata(true);
-        assertTrue(hub.isBaiaLiberaDisponibile(), "Dovrebbe esserci ancora una baia libera");
+        hub.getBays().get(0).setOccupied(true);
+        assertTrue(hub.isBayAvailable(), "Dovrebbe esserci ancora una baia libera");
 
         // Occupiamo la seconda baia
-        hub.getBaie().get(1).setOccupata(true);
+        hub.getBays().get(1).setOccupied(true);
 
         // Ora deve essere pieno
-        assertFalse(hub.isBaiaLiberaDisponibile(), "L'hub dovrebbe risultare pieno");
+        assertFalse(hub.isBayAvailable(), "L'hub dovrebbe risultare pieno");
     }
 
     @Test

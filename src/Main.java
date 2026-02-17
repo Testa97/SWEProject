@@ -15,9 +15,9 @@ public class Main {
 
             // 2. Crea spedizioni casuali (Ora il metodo è automatico!)
             System.out.println("\n--- CREAZIONE SPEDIZIONI ---");
-            manager.creaNuovaSpedizione(); // Crea una spedizione random
-            manager.creaNuovaSpedizione(); // Ne crea un'altra
-            manager.creaNuovaSpedizione(); // Ne crea una terza
+            manager.createNewShipment(); // Crea una spedizione random
+            manager.createNewShipment(); // Ne crea un'altra
+            manager.createNewShipment(); // Ne crea una terza
 
             // 3. Avvia il tempo (Singleton)
             // Il clock inizierà a ticchettare e gli Observer (Manager -> Stati) reagiranno
