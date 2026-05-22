@@ -34,10 +34,10 @@ public class LogisticsManager implements Observer {
         System.out.println("--- CARICAMENTO HUB ---");
         while (scanner.hasNext()) {
             String name = scanner.next();
-            int numBaie = scanner.nextInt();
+            int numBays = scanner.nextInt();
             double lat = scanner.nextDouble();
             double lon = scanner.nextDouble();
-            hubs.add(new Hub(name, numBaie, lat, lon));
+            hubs.add(new Hub(name, numBays, lat, lon));
             System.out.println("Caricato Hub: " + name);
         }
         scanner.close();

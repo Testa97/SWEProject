@@ -35,6 +35,12 @@ public class SimulationClock {
         }
     }
 
+    // Metodo dedicato esclusivamente al testing dell'observer
+    public void manualTickForTest() {
+        currentHour++;
+        notifyObservers();
+    }
+
     // LOGICA TEMPO
     public void startSimulation() {
         running = true;

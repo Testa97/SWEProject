@@ -1,4 +1,5 @@
 package tests;
+import patterns.Observer;
 import patterns.SimulationClock;
 
 import org.junit.jupiter.api.Test;
@@ -20,4 +21,22 @@ class SimulationClockTest {
     void testSingletonNotNull() {
         assertNotNull(SimulationClock.getInstance(), "L'istanza non deve mai essere null");
     }
+
+    //test Observer
+    @Test
+    public void testObserverNotification() {
+        SimulationClock clock = SimulationClock.getInstance();
+        final boolean[] isNotified = {false};
+
+        // Creiamo un Mock Observer al volo usando una lambda
+        Observer mockObserver = currentHour -> isNotified[0] = true;
+
+        clock.addObserver(mockObserver);
+
+        // Attiviamo l'orologio manualmente
+        clock.manualTickForTest();
+
+        assertTrue(isNotified[0], "L'Observer deve ricevere la notifica (update) dal Subject");
+    }
+
 }
