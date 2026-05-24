@@ -1,5 +1,6 @@
-import manager.LogisticsManager;
-import patterns.SimulationClock;
+package core;
+
+import simulation.SimulationClock;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 

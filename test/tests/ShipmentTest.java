@@ -1,8 +1,8 @@
 package tests;
 
-import model.Hub;
-import model.Shipment;
-import model.Van;
+import infrastructure.Hub;
+import shipment.Shipment;
+import fleet.Van;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

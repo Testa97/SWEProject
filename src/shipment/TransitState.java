@@ -1,6 +1,4 @@
-package states;
-
-import model.Shipment;
+package shipment;
 
 public class TransitState implements ShipmentState {
     private int hoursElapsed = 0;

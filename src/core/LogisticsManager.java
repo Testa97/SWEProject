@@ -1,11 +1,11 @@
-package manager;
+package core;
 
-import model.Hub;
-import model.Shipment;
-import model.AbstractVehicle;
-import patterns.SimulationClock;
-import patterns.Observer;
-import patterns.VehicleFactory;
+import infrastructure.Hub;
+import shipment.Shipment;
+import fleet.AbstractVehicle;
+import simulation.SimulationClock;
+import simulation.Observer;
+import fleet.VehicleFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;

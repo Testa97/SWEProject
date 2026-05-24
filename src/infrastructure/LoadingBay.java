@@ -1,4 +1,4 @@
-package model;
+package infrastructure;
 
 public class LoadingBay {
     private int capacity;

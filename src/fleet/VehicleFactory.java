@@ -1,8 +1,4 @@
-package patterns;
-
-import model.AbstractVehicle;
-import model.Truck;
-import model.Van;
+package fleet;
 
 public class VehicleFactory {
 

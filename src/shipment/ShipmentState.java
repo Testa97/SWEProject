@@ -1,6 +1,4 @@
-package states;
-
-import model.Shipment;
+package shipment;
 
 public interface ShipmentState {
     void advance(Shipment contesto);

@@ -1,4 +1,4 @@
-package model;
+package fleet;
 
 public class Van extends AbstractVehicle {
 

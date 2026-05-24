@@ -1,9 +1,9 @@
 package tests;
-import patterns.VehicleFactory;
+import fleet.VehicleFactory;
 
-import model.AbstractVehicle;
-import model.Van;
-import model.Truck;
+import fleet.AbstractVehicle;
+import fleet.Van;
+import fleet.Truck;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

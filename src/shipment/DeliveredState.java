@@ -1,6 +1,4 @@
-package states;
-
-import model.Shipment;
+package shipment;
 
 public class DeliveredState implements ShipmentState {
     @Override

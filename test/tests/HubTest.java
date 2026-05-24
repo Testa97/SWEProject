@@ -1,5 +1,5 @@
 package tests;
-import model.Hub;
+import infrastructure.Hub;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

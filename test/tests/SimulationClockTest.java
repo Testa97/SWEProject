@@ -1,6 +1,6 @@
 package tests;
-import patterns.Observer;
-import patterns.SimulationClock;
+import simulation.Observer;
+import simulation.SimulationClock;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

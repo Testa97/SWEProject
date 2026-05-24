@@ -1,6 +1,7 @@
-package model;
+package shipment;
 
-import states.*; // Importiamo il pacchetto con i nuovi stati
+import fleet.AbstractVehicle;
+import infrastructure.Hub;
 
 public class Shipment {
     // Dati immutabili della spedizione
