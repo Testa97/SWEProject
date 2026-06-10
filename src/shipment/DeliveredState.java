@@ -7,5 +7,5 @@ public class DeliveredState implements ShipmentState {
     }
 
     @Override
-    public String getDescription() { return "CONSEGNATA"; }
+    public String getDescription() { return "DELIVERED"; }
 }

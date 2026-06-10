@@ -14,7 +14,7 @@ public class Main {
             // 1. Inizializza (legge il file hubs.txt e carica la mappa)
             manager.init();
 
-            // 2. Crea spedizioni casuali (Ora il metodo è automatico!)
+            // 2. Crea spedizioni casuali
             System.out.println("\n--- CREAZIONE SPEDIZIONI ---");
             manager.createNewShipment(); // Crea una spedizione random
             manager.createNewShipment(); // Ne crea un'altra

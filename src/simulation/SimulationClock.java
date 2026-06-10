@@ -36,7 +36,7 @@ public class SimulationClock {
     }
 
     // Metodo dedicato esclusivamente al testing dell'observer
-    public void manualTickForTest() {
+    public void advanceTime() {
         currentHour++;
         notifyObservers();
     }

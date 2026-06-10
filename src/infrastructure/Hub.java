@@ -30,7 +30,7 @@ public class Hub {
     public List<LoadingBay> getBays() { return bays; }
 
     // Metodo helper per sapere se c'è almeno una baia libera (Simile a getFullLanding di Raspanti)
-    public boolean isBayAvailable() {
+    public boolean hasAvailableBay() {
         for (LoadingBay b : bays) {
             if (!b.isOccupied()) return true;
         }

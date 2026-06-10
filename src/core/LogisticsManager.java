@@ -84,7 +84,7 @@ public class LogisticsManager implements Observer {
             if (!s.isCompleted()) {
                 // STATE PATTERN: Non controlliamo noi cosa fare. Diciamo solo "avanza".
                 // Sarà lo Stato corrente (InAttesa o InViaggio) a decidere cosa succede.
-                s.advanceOneHour();
+                s.advance();
             }
         }
     }

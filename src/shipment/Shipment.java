@@ -34,7 +34,7 @@ public class Shipment {
 
     // Questo metodo viene chiamato dal LogisticsManager ogni ora.
     // Invece di fare calcoli qui, DELEGHIAMO il lavoro allo stato corrente.
-    public void advanceOneHour() {
+    public void advance() {
         currentState.advance(this);
     }
 

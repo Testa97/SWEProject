@@ -19,5 +19,5 @@ public class TransitState implements ShipmentState {
     }
 
     @Override
-    public String getDescription() { return "IN TRANSITO"; }
+    public String getDescription() { return "TRANSIT"; }
 }

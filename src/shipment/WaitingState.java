@@ -9,5 +9,5 @@ public class WaitingState implements ShipmentState {
     }
 
     @Override
-    public String getDescription() { return "IN PREPARAZIONE"; }
+    public String getDescription() { return "WAITING"; }
 }
