@@ -18,4 +18,13 @@ public class VehicleFactoryTest {
         AbstractVehicle v2 = factory.createVehicle(5000);
         assertTrue(v2 instanceof Truck, "Dovrebbe essere un Truck");
     }
+
+    @Test
+    public void testBoundaryWeight() {
+        VehicleFactory factory = new VehicleFactory();
+
+        AbstractVehicle vehicle = factory.createVehicle(800);
+
+        assertTrue(vehicle instanceof Van);
+    }
 }

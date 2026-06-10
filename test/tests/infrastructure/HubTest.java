@@ -18,4 +18,18 @@ public class HubTest {
 
         assertFalse(hub.hasAvailableBay(), "L'Hub dovrebbe risultare pieno");
     }
+
+    @Test
+    public void testHubWithTwoBays() {
+
+        Hub hub = new Hub("Hub",2,45.0,10.0);
+
+        hub.getBays().get(0).setOccupied(true);
+
+        assertTrue(hub.hasAvailableBay());
+
+        hub.getBays().get(1).setOccupied(true);
+
+        assertFalse(hub.hasAvailableBay());
+    }
 }
