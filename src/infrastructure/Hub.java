@@ -7,7 +7,7 @@ public class Hub {
     private String name;
     private double latitude;
     private double longitude;
-    private List<LoadingBay> bays; // Le "LandingStrip" di Raspanti
+    private List<LoadingBay> bays;
 
     public Hub(String name, int bayCount, double latitude, double longitude) {
         this.name = name;
@@ -29,7 +29,7 @@ public class Hub {
 
     public List<LoadingBay> getBays() { return bays; }
 
-    // Metodo helper per sapere se c'è almeno una baia libera (Simile a getFullLanding di Raspanti)
+    // Metodo helper per sapere se c'è almeno una baia libera
     public boolean hasAvailableBay() {
         for (LoadingBay b : bays) {
             if (!b.isOccupied()) return true;

@@ -13,7 +13,7 @@ public class Van extends AbstractVehicle {
     public void prepareForDeparture() {
         System.out.println("Caricamento rapido Van (ID: " + getId() + ")...");
         try {
-            // Simula un tempo breve di carico (2 secondi) come Raspanti [cite: 555]
+            // Simula un tempo breve di carico (2 secondi)
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();

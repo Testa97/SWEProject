@@ -13,7 +13,6 @@ public abstract class AbstractVehicle {
     }
 
     // Metodo astratto che le sottoclassi devono implementare
-    // Raspanti lo usa per simulare i tempi di attesa/controllo tecnico [cite: 89, 165]
     public abstract void prepareForDeparture();
 
     // Getters e Setters

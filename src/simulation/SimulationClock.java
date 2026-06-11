@@ -20,7 +20,7 @@ public class SimulationClock {
         return instance;
     }
 
-    // OBSERVER: Metodi per gestire gli iscritti
+    // OBSERVER
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
@@ -41,7 +41,7 @@ public class SimulationClock {
         notifyObservers();
     }
 
-    // LOGICA TEMPO
+    // LOGICA DEL TEMPO
     public void startSimulation() {
         running = true;
         // Facciamo partire un Thread separato per non bloccare il programma
@@ -52,7 +52,7 @@ public class SimulationClock {
                     notifyObservers();
 
                     currentHour++;
-                    // Aspettiamo 2 secondi reali per ogni ora simulata (come Raspanti)
+                    // Aspettiamo 2 secondi reali per ogni ora simulata
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
